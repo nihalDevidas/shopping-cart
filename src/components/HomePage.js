@@ -1,13 +1,16 @@
 import React,{useEffect,useState} from 'react'
 import axios from "axios"
-
+import {storeAllProducts, addItemToCart} from "../redux/actions/cartActions"
+import {useDispatch, useSelector} from 'react-redux'
 
 
 
 const HomePage = () => {
 
     const[products, setProducts] = useState([])
-
+    const dispatch = useDispatch()
+    const data = useSelector(state=>state)
+    
    useEffect(()=>{
 
     let info = axios.get("https://dummyjson.com/products");
@@ -23,13 +26,16 @@ const HomePage = () => {
             }
           })
           setProducts(Products)
-          console.log(Products)
+          //console.log(Products)
+          dispatch(storeAllProducts(Products)) // store products in store
        })
        .catch((error)=>{
             console.log(error)
        })
 
    },[])
+
+   console.log(data)
 
   return (
     <div className='home-page-con'>
@@ -47,7 +53,7 @@ const HomePage = () => {
                     <div className='title'>title:{productObj.title}</div>
                     <div className='price'>Price:{productObj.price}</div>
 
-                    <button className='btn3'>Add to Cart</button>
+                    <button className='btn3' onClick = {()=>dispatch(addItemToCart(productObj.id))}>Add to Cart</button>
                 </div>
             ))
         }

@@ -37,7 +37,6 @@
 }
 
 .home-grid-con{
-  border:1px solid;
   width:90%;
   display:grid;
   grid-template-columns: repeat(5,1fr);
@@ -76,4 +75,45 @@
     padding:4px 0px;
     background-color: black;
     color: rgb(202, 208, 208);  
+}
+
+/* css for cart page */
+
+.cart-page-con{
+    margin-top:100px;
+    display: flex;
+} 
+
+.cart-grid-con{
+
+   width:65%;
+   display:grid;
+   grid-template-columns: repeat(3,1fr);
+   gap:25px;
+
+   margin-left: 20px;
+}
+
+/* price box */
+
+.price-list{
+    width: 25%;
+    min-height:fit-content;
+    padding:5px 10px;
+}
+ul{
+    list-style-type: none;
+
+}
+li{
+    border: 0.5px solid;
+    display:flex;
+    justify-content: space-between;
+    padding:3px 0px;
+}
+.price-list > button{
+ width:100%;
+ background-color: black;
+ color: rgb(202, 208, 208);
+ padding:4px 0px; 
 }
